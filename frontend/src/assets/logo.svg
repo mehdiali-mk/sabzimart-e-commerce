@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 38" width="100%" height="auto" style="display: block;">
+  <defs>
+    <linearGradient id="sabziFaviconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8BC34A" />
+      <stop offset="100%" stop-color="#00897B" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(-1.5, -2) scale(0.45)">
+    <path d="M 5,20 C 10,-5 35,5 45,30 C 35,45 15,40 5,20 Z" 
+          fill="url(#sabziFaviconGradient)" />
+    
+    <path d="M 55,20 C 35,20 40,35 55,40 C 70,45 65,60 50,60 L 30,60" 
+          fill="none" 
+          stroke="url(#sabziFaviconGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <path d="M 45,60 L 70,60 L 80,25 L 95,25" 
+          fill="none" 
+          stroke="url(#sabziFaviconGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <circle cx="45" cy="78" r="7" 
+            fill="none" 
+            stroke="url(#sabziFaviconGradient)" 
+            stroke-width="5" />
+            
+    <circle cx="70" cy="78" r="7" 
+            fill="none" 
+            stroke="url(#sabziFaviconGradient)" 
+            stroke-width="5" />
+  </g>
+
+  <text x="44" y="32" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="33" letter-spacing="-0.5" fill="url(#sabziFaviconGradient)">
+    SabziMart
+  </text>
+</svg>

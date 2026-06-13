@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+@import "tailwindcss";
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+@theme {
+  --color-primary: #4fbf8b;
+  --color-primary-dull: #44ae7c;
+}
+
+html {
+  /* font-size: 62.5%; */
+  font-family: "Outfit", sans-serif;
+}
