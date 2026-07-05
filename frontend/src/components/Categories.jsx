@@ -11,7 +11,7 @@ import "swiper/css";
 // 3. Import the Autoplay module
 import { Autoplay } from "swiper/modules";
 export default function Categories() {
-  const navigate = useAppContext();
+  const { navigate } = useAppContext();
   // 1. Create a reference to hold the Swiper instance
   const swiperRef = useRef(null);
 
@@ -25,7 +25,7 @@ export default function Categories() {
         if (swiperRef.current) swiperRef.current.autoplay.start();
       }}
     >
-      <p className="text-2xl md:text-3xl font-medium">Categories</p>
+      <p className="text-2xl md:text-3xl font-medium mb-4">Categories</p>
       <Swiper
         // 3. Save the Swiper instance to our ref when it loads
         onSwiper={(swiper) => (swiperRef.current = swiper)}
