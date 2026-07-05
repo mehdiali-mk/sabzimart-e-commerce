@@ -59,6 +59,26 @@ export const AppContextProvider = ({ children }) => {
     toast.success("Removed from Cart.");
   }
 
+  function getCartCount() {
+    let totalItemsCount = 0;
+    for (let items in cartItems) {
+      totalItemsCount += cartItems[items];
+    }
+    return totalItemsCount;
+  }
+
+  function getCartAmount() {
+    let totalCartAmount = 0;
+    for (let items in cartItems) {
+      let itemInfo = products.find((product) => product._id === items);
+      if (cartItems[items] > 0) {
+        totalCartAmount += itemInfo.offerPrice * cartItems[items];
+      }
+    }
+
+    return Math.floor(totalCartAmount * 100) / 100;
+  }
+
   const value = {
     navigate,
     user,
@@ -75,6 +95,8 @@ export const AppContextProvider = ({ children }) => {
     removeCartItem,
     searchQuery,
     setSearchQuery,
+    getCartAmount,
+    getCartCount,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -5,7 +5,14 @@ import { assets } from "../assets/assets";
 import ProductCard from "./ProductCard";
 
 export default function ProductDetails() {
-  const { products, navigate, currency, addCartItem } = useAppContext();
+  const {
+    products,
+    navigate,
+    currency,
+    addCartItem,
+    cartItems,
+    removeCartItem,
+  } = useAppContext();
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
 
@@ -109,12 +116,34 @@ export default function ProductDetails() {
             </ul>
 
             <div className="flex items-center mt-10 gap-4 text-base">
-              <button
-                onClick={() => addCartItem(product._id)}
-                className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
-              >
-                Add to Cart
-              </button>
+              {console.log(cartItems[product._id])}
+              {!cartItems[product._id] ? (
+                <button
+                  onClick={() => addCartItem(product._id)}
+                  className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
+                >
+                  Add to Cart
+                </button>
+              ) : (
+                <div className="w-full cursor-pointer font-medium bg-gray-300 text-gray-800/80 grid grid-cols-3 items-center justify-center gap-2 ">
+                  <button
+                    onClick={() => removeCartItem(product._id)}
+                    className="cursor-pointer text-md px-2 h-full  py-3.5 border-r hover:bg-gray-200"
+                  >
+                    -
+                  </button>
+                  <span className="text-center font-bold py-3.5 ">
+                    {cartItems[product._id]}
+                  </span>
+                  <button
+                    onClick={() => addCartItem(product._id)}
+                    className="cursor-pointer text-md px-2 h-full py-3.5 border-l hover:bg-gray-200"
+                  >
+                    +
+                  </button>
+                </div>
+              )}
+
               <button
                 onClick={() => {
                   addCartItem(product._id);

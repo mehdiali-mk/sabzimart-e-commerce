@@ -5,8 +5,14 @@ import { useAppContext } from "../context/AppContext.jsx";
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const { user, setUser, setShowUserLogin, setSearchQuery, searchQuery } =
-    useAppContext();
+  const {
+    user,
+    setUser,
+    setShowUserLogin,
+    setSearchQuery,
+    searchQuery,
+    getCartCount,
+  } = useAppContext();
 
   const navigate = useNavigate();
 
@@ -54,7 +60,7 @@ export default function Navbar() {
             className="w-6 opacity-80"
           />
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
-            3
+            {getCartCount() > 0 ? getCartCount() : "-"}
           </button>
         </div>
         {!user ? (
@@ -91,26 +97,27 @@ export default function Navbar() {
         )}
       </div>
 
-      <button
-        onClick={() => (open ? setOpen(false) : setOpen(true))}
-        aria-label="Menu"
-        className="sm:hidden"
-      >
-        {/* Menu Icon SVG */}
-        {/* <svg
-          width="21"
-          height="15"
-          viewBox="0 0 21 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      <div className="flex gap-6 sm:hidden">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate("/cart")}
         >
-          <rect width="21" height="1.5" rx=".75" fill="#426287" />
-          <rect x="8" y="6" width="13" height="1.5" rx=".75" fill="#426287" />
-          <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="#426287" />
-        </svg> */}
-
-        <img src={assets.menu_icon} alt="Menu Icon" />
-      </button>
+          <img
+            src={assets.nav_cart_icon}
+            alt="Cart Icon"
+            className="w-6 opacity-80"
+          />
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
+            {getCartCount() > 0 ? getCartCount() : "-"}
+          </button>
+        </div>
+        <button
+          onClick={() => (open ? setOpen(false) : setOpen(true))}
+          aria-label="Menu"
+        >
+          <img src={assets.menu_icon} alt="Menu Icon" />
+        </button>
+      </div>
 
       {/* Mobile Menu */}
       {open && (
