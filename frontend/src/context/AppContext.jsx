@@ -9,8 +9,6 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const currency = import.meta.env.VITE_BASE_CURRENCY;
 
-  console.log(currency);
-
   const navigate = useNavigate();
   const [user, setUser] = useState(true);
   const [isSeller, setIsSeller] = useState(false);
@@ -52,11 +50,24 @@ export const AppContextProvider = ({ children }) => {
     if (cartData[itemId]) {
       cartData[itemId] -= 1;
       if (cartData[itemId] === 0) {
+        console.log(cartData[itemId]);
         delete cartData[itemId];
+        console.log(cartData[itemId]);
       }
     }
     setCartItems(cartData);
     toast.success("Removed from Cart.");
+  }
+
+  function deleteCartItem(itemId) {
+    let cartData = structuredClone(cartItems);
+    console.log(itemId);
+    if (cartData[itemId]) {
+      delete cartData[itemId];
+    }
+    console.log(cartData[itemId]);
+    setCartItems(cartData);
+    toast.success("Deleted from Cart.");
   }
 
   function getCartCount() {
@@ -93,6 +104,7 @@ export const AppContextProvider = ({ children }) => {
     addCartItem,
     updateCartQuantity,
     removeCartItem,
+    deleteCartItem,
     searchQuery,
     setSearchQuery,
     getCartAmount,
